@@ -1,7 +1,4 @@
 #!/bin/bash
-
 echo "开始执行\
-
 自定义脚本"\
-
 && echo "hahaha"
