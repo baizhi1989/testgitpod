@@ -26,10 +26,12 @@ fi
 # qemu-system-x86_64 /home/user/b.qcow2 -boot menu=on
 
 qemu-system-x86_64 -enable-kvm \
--m 1G \
+-m 4G \
 -hda \
 /home/user/b.qcow2 \
 -nic user,hostfwd=tcp::5022-:22 \
+-show-cursor \
+-usbdevice tablet \
 -boot menu=on
 
 

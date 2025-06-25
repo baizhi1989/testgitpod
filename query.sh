@@ -3,16 +3,13 @@
 
 
 # 检测curl是否已安装（通过dpkg查询包状态）
-if ! dpkg -s curl >/dev/null 2>&1; then echo "curl未安装，开始安装..."
-# 更新包索引并安装curl（-y自动确认）
-  sudo apt update && sudo apt install -y curl
-fi
 
+# rm -rf /home/user/b.qcow2
 
-# 检查安装是否成功
-if [ $? -eq 0 ]; then
-  echo "curl安装成功！"
-else
-  echo "curl安装失败，请检查网络或权限。"
-fi
+# curl -o /home/user/b.qcow2 https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-amd64.qcow2
 
+wget -O /home/user/ubuntu.iso http://de.releases.ubuntu.com/16.04/ubuntu-16.04.3-server-amd64.iso
+
+qemu-img create -f qcow2 /home/user/ubuntu.qcow2 30G
+
+qemu-system-x86_64 -cpu host -enable-kvm -m 512 -hda /home/user/ubuntu.qcow2 -cdrom /home/user/ubuntu.iso -usbdevice tablet
