@@ -9,7 +9,7 @@ else
     curl -o /home/user/b.qcow2 https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-amd64.qcow2
 fi
 
-
+sudo apt update
 sudo apt-get install -y git libglib2.0-dev libfdt-dev\
 libpixman-1-dev zlib1g-dev ninja-build qemu-system
 
