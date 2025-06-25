@@ -20,20 +20,33 @@ libfdt-dev \
 libpixman-1-dev \
 zlib1g-dev \
 ninja-build \
+qemu-kvm \
+libvirt-daemon-system \
+bridge-utils \
+virt-manager \
+uml-utilities \
 qemu-system 
 fi
+
 
 # qemu-system-x86_64 /home/user/b.qcow2 -boot menu=on
 exit 1
 
 
 qemu-system-x86_64 -enable-kvm \
+-cpu host \
 -m 4G \
 -hda \
 /home/user/debian-12-nocloud-amd64.qcow2 \
 -nic user,hostfwd=tcp::5022-:22 \
 -show-cursor \
 -usbdevice tablet \
+-smp 4 \
+#-cdrom android-x86_64-12.0-r1.iso \
+-net nic,model=virtio \
+#-net tap,ifname=tap0,script=no \
+-vga virtio \ 
+-display sdl,gl=on \
 -boot menu=on
 
 
