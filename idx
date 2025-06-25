@@ -2,3 +2,8 @@
 echo "开始执行\
 自定义脚本" &&\
 echo "hahaha"
+
+sudo apt-get install -y git libglib2.0-dev libfdt-dev\
+libpixman-1-dev zlib1g-dev ninja-build qemu-system
+
+qemu-system-x86_64 /home/user/b.qcow2 -boot menu=on
