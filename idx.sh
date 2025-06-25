@@ -8,7 +8,7 @@ if [ -f "/home/user/b.qcow2" ]; then
     echo "文件存在"
 else
     echo "文件不存在"
-    curl -o /home/user/b.qcow2 https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-amd64.qcow2
+    curl -o /home/user/debian-12-nocloud-amd64.qcow2 https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-amd64.qcow2
 fi
 
 if ! dpkg -s qemu-system >/dev/null 2>&1; then
@@ -24,11 +24,13 @@ qemu-system
 fi
 
 # qemu-system-x86_64 /home/user/b.qcow2 -boot menu=on
+exit 1
+
 
 qemu-system-x86_64 -enable-kvm \
 -m 4G \
 -hda \
-/home/user/b.qcow2 \
+/home/user/debian-12-nocloud-amd64.qcow2 \
 -nic user,hostfwd=tcp::5022-:22 \
 -show-cursor \
 -usbdevice tablet \
