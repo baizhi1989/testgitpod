@@ -14,4 +14,4 @@ sudo apt update -y \
 libpixman-1-dev zlib1g-dev ninja-build qemu-system \
 && qemu-system-x86_64 /home/user/b.qcow2 -boot menu=on
 
-# 哈哈哈
+# 哈8
