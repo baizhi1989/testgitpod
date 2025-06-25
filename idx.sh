@@ -11,9 +11,18 @@ else
     curl -o /home/user/b.qcow2 https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-nocloud-amd64.qcow2
 fi
 
-sudo apt update -y \
-&& sudo apt-get install -y git libglib2.0-dev libfdt-dev \
-libpixman-1-dev zlib1g-dev ninja-build qemu-system \
-&& qemu-system-x86_64 /home/user/b.qcow2 -boot menu=on
+if ! dpkg -s qemu-system >/dev/null 2>&1; then
+  echo "qemu-system未安装，开始安装..."
+  sudo apt update -y \
+&& sudo apt-get install -y git \
+libglib2.0-dev \
+libfdt-dev \
+libpixman-1-dev \
+zlib1g-dev \
+ninja-build \
+qemu-system 
+fi
+
+qemu-system-x86_64 /home/user/b.qcow2 -boot menu=on
 
 # 哈8

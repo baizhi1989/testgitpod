@@ -3,8 +3,7 @@
 
 
 # 检测curl是否已安装（通过dpkg查询包状态）
-if ! dpkg -s curl &> /dev/null; then
-  echo "curl未安装，开始安装..."
+if ! dpkg -s curl >/dev/null 2>&1; then echo "curl未安装，开始安装..."
 # 更新包索引并安装curl（-y自动确认）
   sudo apt update && sudo apt install -y curl
 fi
