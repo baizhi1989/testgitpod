@@ -11,10 +11,5 @@ sudo apt update && sudo apt install -y curl
 if [ $? -eq 0 ]; then
 echo "curl安装成功！"
 else
-echo "curl安装失败，请检查网络或权限。" >&2
-exit 1
-fi
-else
-echo "curl已安装，版本信息："
-curl --version
+echo "curl安装失败，请检查网络或权限。"
 fi
