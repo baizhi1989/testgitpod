@@ -23,6 +23,14 @@ ninja-build \
 qemu-system 
 fi
 
-qemu-system-x86_64 /home/user/b.qcow2 -boot menu=on
+# qemu-system-x86_64 /home/user/b.qcow2 -boot menu=on
+
+qemu-system-x86_64 -enable-kvm \
+-m 1G \
+-hda \
+/home/user/b.qcow2 \
+-nic user,hostfwd=tcp::5022-:22 \
+-boot menu=on
+
 
 # 哈8
